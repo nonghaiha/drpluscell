@@ -1,0 +1,19 @@
+#title{  
+    padding: 10px;
+    margin-left: 15px,
+}
+.paging{
+    margin: 0px 20px;
+}
+
+.action{
+	overflow: hidden;
+}
+.action a{
+	float: left;
+	margin-right: 5px;
+}
+.form-action{
+	float: left;
+	margin-left: 5px;
+}
