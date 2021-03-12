@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAttributeTable extends Migration
+class AddDeletedAtToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateAttributeTable extends Migration
      */
     public function up()
     {
-        Schema::create('attribute', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('size')->nullable();
-            $table->string('type')->nullable();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
@@ -29,6 +25,8 @@ class CreateAttributeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attribute');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('dele    ted_at');
+        });
     }
 }

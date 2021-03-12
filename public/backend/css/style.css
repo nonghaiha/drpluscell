@@ -40,3 +40,15 @@
 .table-action a.label{
 	margin-left: 5px
 }
+.product .content-wrapper a.thumbnail{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+}
+.product .content-wrapper a.thumbnail img{
+    width: 257px;
+    height: 356px;
+    object-fit: cover;
+    padding: 0 3px;
+    border-radius: 20px;
+}

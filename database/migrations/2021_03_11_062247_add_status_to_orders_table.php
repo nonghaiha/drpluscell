@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAttributeTable extends Migration
+class AddStatusToOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateAttributeTable extends Migration
      */
     public function up()
     {
-        Schema::create('attribute', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('size')->nullable();
-            $table->string('type')->nullable();
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->integer('status')->default(0);
         });
     }
 
@@ -29,6 +25,8 @@ class CreateAttributeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attribute');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
     }
 }

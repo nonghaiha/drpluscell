@@ -14,14 +14,6 @@
           @endif
   	</div>
     <div class="form-group">
-      <label for="">Tên tài khoản</label>
-          <input type="text" class="form-control" id="user_name" name="usename" value="{{$user->usename }}" placeholder="Nhập tên ...">
-          @if ($errors->has('usename'))
-           <p class="text-danger">{{ $errors->first('usename') }}</p>
-          @endif
-    </div>
-
-    <div class="form-group">
       <label for="">Email</label>
           <input type="text" class="form-control" id="user_email" name="email" value="{{$user->email }}" placeholder="Nhập email...">
           @if ($errors->has('email'))

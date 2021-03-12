@@ -31,5 +31,8 @@ class AppServiceProvider extends ServiceProvider
                 'categories' => Categories::orderBy('name','ASC')->get()
             ]);
         });
+        if(base_path('app/helpers.php')){
+            include base_path('app/helpers.php');
+        }
     }
 }

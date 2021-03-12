@@ -76,7 +76,7 @@ $config = array(
     | with start and final /
     |
     */
-    'upload_dir' => '/laravel_shop_quan_ao/public/backend/uploads/',
+    'upload_dir' => '/drpluscell/public/backend/uploads/',
     /*
     |--------------------------------------------------------------------------
     | relative path from filemanager folder to upload folder

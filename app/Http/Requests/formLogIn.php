@@ -24,16 +24,15 @@ class formLogIn extends FormRequest
     public function rules()
     {
         return [
-            'usename'=>'bail|required|min:6|alpha_num',
+            'email'=>'bail|required|min:6',
             'password'=>'bail|required|min:6'
         ];
     }
     public function messages()
     {
         return [
-            'usename.required'=>'Bạn chưa nhập tên tài khoản !', 
-            'usename.alpha_num'=>'Tên tài khoản không được chứa ký tự đặc biệt !', 
-            'usename.min'=>'Tên tài khoản phải có it nhất 6 kí tự !', 
+            'email.required'=>'Bạn chưa nhập tên tài khoản !',
+            'email.min'=>'Tên tài khoản phải có it nhất 6 kí tự !',
             'password.required'=>'Bạn chưa nhập mật khẩu !', 
             'password.min'=>'Mật khẩu phải có ít nhất 6 kí tự !', 
         ];

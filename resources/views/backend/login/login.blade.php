@@ -27,10 +27,10 @@
   <form action="{{route('postLogin')}}" method="post">
     @csrf
       <div class="form-group has-feedback">
-      <input type="text" class="form-control" name="usename" placeholder="Tên tài khoản" value="{{old('usename')}}">
+      <input type="text" class="form-control" name="email" placeholder="Tên tài khoản" value="{{old('email')}}">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        @if ($errors->has('usename'))
-           <p class="text-danger">{{ $errors->first('usename') }}</p>
+        @if ($errors->has('email'))
+           <p class="text-danger">{{ $errors->first('email') }}</p>
         @endif
         @if (Session::has('error'))
       <p class="text-danger">{{Session::get('error')}}</p>

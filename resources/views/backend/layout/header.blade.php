@@ -34,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </script>
 
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini @yield('body-class')">
 <div class="wrapper">
 
   <header class="main-header">

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
+
 class CategoryController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class CategoryController extends Controller
     */
     public function index()
     {
-       $data['categorys']=Categories::where('parent_id',1)->orderBy('id','asc')->paginate(5);
+       $data['categorys']=Categories::orderBy('id','asc')->paginate(5);
        return view('backend.category.index',$data);
     }
 

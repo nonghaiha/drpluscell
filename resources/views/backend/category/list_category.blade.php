@@ -22,7 +22,6 @@
                 <td>{{ $cat->created_at}}</td>
                 <td>
                     <div class="action">
-                        <a href="{{route('dm_con_category',['id'=>$cat->id,'cap'=>($cap+1)])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> DM.con</a>
                         <a href="{{route('category.edit',['id'=>$cat->id])}}" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Sửa</a>
                         <form action="{{route('category.destroy',['id'=>$cat->id])}}" method="post" accept-charset="utf-8" class="form-action">
                          @csrf

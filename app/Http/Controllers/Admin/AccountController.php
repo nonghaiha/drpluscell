@@ -64,17 +64,13 @@ class AccountController extends Controller
     {
         $this->validate($request,[
             'name'=>'bail|required',
-            'usename'=>'bail|required|min:6|unique:users,usename,'.$id,
             'email'=>'bail|required|email|unique:users,email,'.$id,
             'confirm_password'=>'bail|same:password',
         ],[
             'name.required'=>'Bạn chưa nhập tên tài khoản !',
             'email.required'=>'Bạn chưa nhập email !', 
             'email.email'=>'Bạn phải nhập đúng chuẩn email !', 
-            'email.unique'=>'Email này đã được sử dụng !', 
-            'usename.required'=>'Bạn chưa nhập tài khoản !', 
-            'usename.min'=>'Tài khoản phải có ít nhất 6 kí tự !', 
-            'usename.unique'=>'Tài khoản này đã được sử dụng !', 
+            'email.unique'=>'Email này đã được sử dụng !',
             'confirm_password.same'=>'Mật khẩu nhập lại không chính sác !',
         ]);
         if($request->img)

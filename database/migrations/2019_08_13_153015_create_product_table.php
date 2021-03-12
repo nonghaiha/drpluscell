@@ -14,7 +14,7 @@ class CreateProductTable extends Migration
     public function up()
     {
         Schema::create('product', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements ('id');
             $table->string('name');
             $table->string('sulg');
             $table->float('price');
@@ -22,7 +22,7 @@ class CreateProductTable extends Migration
             $table->string('image');
             $table->text('images')->nullable();
             $table->text('content');
-            $table->integer('category_id')->unsigned();
+            $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')
                   ->references('id')
                   ->on('category')

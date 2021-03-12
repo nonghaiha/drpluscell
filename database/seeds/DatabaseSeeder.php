@@ -50,14 +50,7 @@ class UserSeeder extends Seeder
                 'name' => 'Drpluscell Administrator',
                 'email' => 'admin@drpluscell.com',
                 'password' => bcrypt('00000000'),
-                'is_admin' => 1
             ],
-            [
-                'name' => 'Normal User',
-                'email' => 'normal@drpluscell.com',
-                'password' => bcrypt('00000000'),
-                'is_admin' => 0
-            ]
         ];
 
         foreach ($roles as $k => $role) {
@@ -78,7 +71,6 @@ class UserSeeder extends Seeder
                     'name' => 'CMS Administrator',
                     'email' => 'nonghaiha@caerux.com',
                     'password' => bcrypt('00000000'),
-                    'is_admin' => 1
                 ]);
                 $newUser->attachRole($newRole);
             }
