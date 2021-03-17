@@ -3,9 +3,8 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Tên thuộc tính</th>
-                    <th>Màu sắc</th>
-                    <th>Size</th>
+                    <th>Đơn vị</th>
+                    <th>Dung tích</th>
                     <th>Hành động</th>
                 </tr>
             </thead>
@@ -13,8 +12,7 @@
                 @foreach ($attributes as $key => $att)
                 <tr>
                     <td>{{$key+1}}</td>
-                    <td>{{$att->name}}</td>
-                    <td>{{$att->color}}</td>
+                    <td>{{$att->type}}</td>
                     <td>{{$att->size}}</td>
                     <td>
                         <div class="action">

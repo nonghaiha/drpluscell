@@ -5,17 +5,17 @@
     <!-- Default panel contents -->
     <div class="panel-heading">Danh sách sản phẩm</div>
     <div class="panel-body">
-        <form action="" method="get" class="form-inline" role="form">
-
+        <form action="{{route('product.search')}}" method="POST" class="form-inline" role="form">
+@csrf
             <div class="col-md-6" class="form-search">
-                                        
+
                 <div class="input-group">
                 <input type="text" name="search" id="search" class="form-control" placeholder="Search...">
                 <span class="input-group-btn">
                     <button type="submit" id="search_btn" class="btn btn-primary"><i class="fa fa-search"></i>
                     </button>
                 </span>
-                
+
                 </div>
             <a href="{{route('product.create')}}" class="btn btn-success">Thêm mới</a>
              </div>
@@ -27,6 +27,7 @@
         <thead>
             <tr>
                 <th>STT</th>
+                <th>Danh mục</th>
                 <th>Sản phẩm</th>
                 <th>Loại</th>
                 <th>Giá</th>
@@ -38,32 +39,32 @@
         <tbody>
             @foreach ($products as $key => $product)
             @php
-                $status=$product->status==1?'Hiển thị':'Ẩn';
+                $status= $product->status == 1 ? 'Hiển thị' : 'Ẩn';
             @endphp
             <tr>
                 <td>{{$key+1}}</td>
                 <td class="col-md-3">
+                    {{$product->category->name}}
+                </td>
+                <td class="col-md-3">
                     <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object" src="{{ $product->image }}" alt="Image" width="60">
-                        </a>
                         <div class="media-body">
                             <h4 class="media-heading">{{ $product->name }}</h4>
-                            <p>{{ $product->created_at->format('d-m-Y') }}</p>
+                            <p>{{ \Carbon\Carbon::parse($product->created_at)->format('Y-m-d') }}</p>
                         </div>
                     </div>
                 </td>
                 <td class="col-md-2">
                    @foreach ($product->attribute as $att)
-                    <small class="btn btn-default btn-xs">{{($att->name)}}:{{($att->pivot->quantity)}} </small>
+                    <small class="btn btn-default btn-xs">{{($att->size . ' - ' . $att->type)}}:{{($att->pivot->quantity)}} </small>
                     @endforeach
                 </td>
                 <td>{{ number_format($product->price)}} đ</td>
-                <td>{{$product->sale}} %</td>
+                <td>{{$product->sale}} </td>
                 <td>{{$status}}</td>
                 <td>
                     <div class="action">
-                        
+
                         <form action="{{route('product.destroy',['id'=>$product->id])}}" method="POST"  class="form-action">
                                 @csrf
                         <a href="{{route('get.product.kho',['id'=>$product->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> Nhập kho</a>

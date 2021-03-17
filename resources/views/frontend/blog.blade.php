@@ -9,7 +9,7 @@
                     <div class="blog-carousel owl-carousel owl-theme">
                         <article class="entry">
                             <div class="entry-media">
-                                <a href="single.html">
+                                <a href="{{route('single')}}">
                                     <img src="{{ url('/frontend') }}/assets/images/blog/home/post-1.png" alt="Post">
                                 </a>
                                 <div class="entry-date">29<span>Now</span></div><!-- End .entry-date -->
@@ -17,7 +17,7 @@
 
                             <div class="entry-body">
                                 <h3 class="entry-title">
-                                    <a href="single.html">New Collection</a>
+                                    <a href="{{route('single')}}">New Collection</a>
                                 </h3>
                                 <div class="entry-content">
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has...</p>
@@ -29,7 +29,7 @@
 
                         <article class="entry">
                             <div class="entry-media">
-                                <a href="single.html">
+                                <a href="{{route('single')}}">
                                     <img src="{{ url('/frontend') }}/assets/images/blog/home/post-2.png" alt="Post">
                                 </a>
                                 <div class="entry-date">30 <span>Now</span></div><!-- End .entry-date -->
@@ -37,19 +37,19 @@
 
                             <div class="entry-body">
                                 <h3 class="entry-title">
-                                    <a href="single.html">Fashion Trends</a>
+                                    <a href="{{route('single')}}">Fashion Trends</a>
                                 </h3>
                                 <div class="entry-content">
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has...</p>
 
-                                    <a href="single.html" class="btn btn-dark">Read More</a>
+                                    <a href="{{route('single')}}" class="btn btn-dark">Read More</a>
                                 </div><!-- End .entry-content -->
                             </div><!-- End .entry-body -->
                         </article><!-- End .entry -->
 
                         <article class="entry">
                             <div class="entry-media">
-                                <a href="single.html">
+                                <a href="{{route('single')}}">
                                     <img src="{{ url('/frontend') }}/assets/images/blog/home/post-3.png" alt="Post">
                                 </a>
                                 <div class="entry-date">28 <span>Now</span></div><!-- End .entry-date -->
@@ -57,7 +57,7 @@
 
                             <div class="entry-body">
                                 <h3 class="entry-title">
-                                    <a href="single.html">Women Fashion</a>
+                                    <a href="{{route('single')}}">Women Fashion</a>
                                 </h3>
                                 <div class="entry-content">
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has...</p>

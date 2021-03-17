@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Porto - Bootstrap eCommerce Template</title>
-        
+
     <link rel="icon" type="image/x-icon" href="{{ url('/frontend') }}/assets/images/icons/favicon.ico">
     <link rel="stylesheet" href="{{ url('/frontend') }}/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url('/frontend') }}/assets/css/style.min.css">
@@ -352,7 +352,7 @@
                 </div><!-- End .header-bottom -->
             </div><!-- End .header-bottom -->
         </header><!-- End .header -->
-        
+
         <main class="main">
             <div class="home-slider-container">
                 <div class="home-slider owl-carousel owl-theme owl-theme-light">
@@ -420,7 +420,7 @@
                     </div><!-- End .info-box -->
                 </div><!-- End .container -->
             </div><!-- End .info-boxes-container -->
-            
+
             <div class="banners-group">
                 <div class="container">
                     <div class="row">
@@ -450,7 +450,7 @@
                     </div><!-- End .row -->
                 </div><!-- End .container -->
             </div><!-- End .banneers-group -->
-            
+
             <div class="featured-products-section carousel-section">
                 <div class="container">
                     <h2 class="h3 title mb-4 text-center">Featured Products</h2>
@@ -916,7 +916,7 @@
                                 </div><!-- End .feature-box-content -->
                             </div><!-- End .feature-box -->
                         </div><!-- End .col-md-4 -->
-                        
+
                         <div class="col-md-4">
                             <div class="feature-box feature-box-simple text-center">
                                 <i class="icon-credit-card"></i>
@@ -1128,7 +1128,7 @@
                                 <div class="col-md-7">
                                     <div class="widget">
                                         <h4 class="widget-title">Main Features</h4>
-                                        
+
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">

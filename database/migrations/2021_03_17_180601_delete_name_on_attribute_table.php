@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAttributeTable extends Migration
+class DeleteNameOnAttributeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateAttributeTable extends Migration
      */
     public function up()
     {
-        Schema::create('attribute', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('size')->nullable();
-            $table->string('type')->nullable();
-            $table->timestamps();
+        Schema::table('attribute', function (Blueprint $table) {
+            $table->dropColumn('name');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateAttributeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attribute');
+        Schema::table('attribute', function (Blueprint $table) {
+            $table->dropColumn('name');
+        });
     }
 }

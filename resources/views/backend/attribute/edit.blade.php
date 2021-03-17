@@ -10,59 +10,30 @@
     <legend>Sửa</legend>
       @csrf
     <input type="hidden" name="_method" value="PUT">
-    <div class="form-group">
-      <label for="">Màu sắc</label>
-          <input type="text" class="form-control" name="color" id="color" v-model="color" value="{{$attribute->color }}" placeholder="Nhập kí hiệu thuộc tính...">
-          @if ($errors->has('color'))
-           <p class="text-danger">{{ $errors->first('color') }}</p>
-           @endif
-    </div>
 
     <div class="form-group">
       <label for="">Size</label>
-          <input type="text" class="form-control" name="size" id="size" v-model="size" value="{{$attribute->size }}" placeholder="Nhập kí hiệu thuộc tính...">
+          <input type="text" class="form-control" name="size" id="size" v-model="size" value="{{$attribute->size }}" placeholder="Nhập dung tích...">
           @if ($errors->has('size'))
            <p class="text-danger">{{ $errors->first('size') }}</p>
            @endif
     </div>
     <div class="form-group">
-        <label for="">Tên thuộc tính</label>
-          <input type="text" class="form-control" name="name"  value="{{ $attribute->name }}" id="name" placeholder="Nhập tên thuộc tính...">
-          @if ($errors->has('name'))
-           <p class="text-danger">{{ $errors->first('name') }}</p>
+        <label for="">Đơn vị</label>
+          <input type="text" class="form-control" name="type"  value="{{ $attribute->type }}" id="name" placeholder="Nhập đơn vị...">
+          @if ($errors->has('type'))
+           <p class="text-danger">{{ $errors->first('type') }}</p>
            @endif
     </div>
 
       <button type="submit" class="btn btn-primary">Update</button>
       <a href="{{ route('attribute.index') }}" title="" class="btn btn-warning">Trở lại</a>
   </form>
-    
+
 
     <!-- Table -->
     @include('backend.attribute.list_att')
     </div>
     </div>
 </div>
-@stop()
-@section('js')
-<script >
-  
-  var app=new Vue({
-    el:'#app',
-    data:function(){
-       return{
-       color:$('#color').val(),
-       size:$('#size').val(),
-       name:'',
-
-       }
-    },
-    methods:{
-      on_name:function(){
-        this.name=this.color+'-'+this.size;
-        $('#name').val(this.name);
-      }
-    }
-  });
-</script>
 @stop()

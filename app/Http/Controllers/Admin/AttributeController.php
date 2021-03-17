@@ -8,7 +8,7 @@ use App\Models\Attribute;
 use Validator;
 class AttributeController extends Controller
 {
-     /** 
+     /**
     GET account.index =>url account/index
     */
     public function index()
@@ -17,7 +17,7 @@ class AttributeController extends Controller
        return view('backend.attribute.index',$data);
     }
 
-    /** 
+    /**
     GET account.create =>url account/create
     */
     public function create()
@@ -25,26 +25,23 @@ class AttributeController extends Controller
        return view('backend.attribute.create');
     }
 
-    /** 
+    /**
     post account.store =>url acount/store
     */
     public function store(Request $request)
     {
         $this->validate($request,[
-           'color'=>'bail|required',
            'size'=>'bail|required',
-           'name'=>'bail|required|unique:attribute,name',
+           'type'=>'bail|required',
         ],[
-            'color.required'=>'Bạn chưa nhập màu sắc !',
             'size.required'=>'Bạn chưa nhập size !',
-            'name.required'=>'Bạn chưa nhập tên thuộc tính !',
-            'name.unique'=>'Tên thuộc tính đã tồn tại !',
+            'type.required'=>'Bạn chưa nhập tên đơn vị !',
         ]);
         attribute::create($request->all());
         return redirect()->back();
     }
 
-    /** 
+    /**
     get account.edit =>url acount/1/edit
     */
     public function edit($id)
@@ -54,20 +51,17 @@ class AttributeController extends Controller
        return view('backend.attribute.edit',$data);
     }
 
-     /** 
+     /**
     put account.update =>url acount/1/update
     */
     public function update(Request $request,$id)
     {
         $this->validate($request,[
-           'color'=>'bail|required',
            'size'=>'bail|required',
-           'name'=>'bail|required|unique:attribute,name,'.$id,
+           'type'=>'bail|required',
         ],[
-            'color.required'=>'Bạn chưa nhập màu sắc !',
             'size.required'=>'Bạn chưa nhập size !',
-            'name.required'=>'Bạn chưa nhập tên thuộc tính !',
-            'name.unique'=>'Tên thuộc tính đã tồn tại !',
+            'type.required'=>'Bạn chưa nhập tên thuộc tính !',
         ]);
         $request->offsetUnset('_token');//or $request->only('name','status');
         $request->offsetUnset('_method');
@@ -75,7 +69,7 @@ class AttributeController extends Controller
         return redirect()->route('attribute.index');
     }
 
-    /** 
+    /**
     get account.show =>url acount/1
     */
     public function show($id)
@@ -83,7 +77,7 @@ class AttributeController extends Controller
 
     }
 
-    /** 
+    /**
     delete account.show =>url acount/1
     */
     public function destroy($id)

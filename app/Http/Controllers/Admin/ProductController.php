@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Categories;
+use App\Models\Media;
 use App\Models\OrdersDetail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Attribute;
 use App\Models\ProductAttribute;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -18,7 +21,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data['products'] = product::orderBy('id', 'desc')->paginate(5);
+        $data['products'] = product::with('category')->orderBy('id', 'desc')->paginate(5);
         return view('backend.product.index', $data);
     }
 
@@ -43,17 +46,28 @@ class ProductController extends Controller
         $slug = str_slug($request->name);
         $request['slug'] = $slug;
         $data = $request->all();
+        $result = Product::create([
+            'name' => $data['name'],
+            'content' => $data['content'],
+            'price' => $data['price'],
+            'sale' => $data['sale'],
+            'category_id' => $data['category_id'],
+            'status' => $data['status'],
+            'slug' => $data['slug']
+        ]);
 
         if ($request->image){
-
             foreach ($request->image as $key => $value){
-                $file = $request->image;
-                $fileName = generate_random_string(10) . substr($file->getClientOriginalName(), strpos($file->getClientOriginalName(),'.'));
-                dd($fileName);
+                $fileName = Carbon::now()->timestamp . '_' .generate_random_string(11) . substr($value->getClientOriginalName(), strpos($value->getClientOriginalName(),'.'));
+                $value->move(storage_path('app/public/images/products'),$fileName);
+                $dataMedia['product_id'] = $result['id'];
+                $dataMedia['image'] = $fileName;
+                Media::create([
+                    'product_id' => $dataMedia['product_id'],
+                    'image' => $dataMedia['image']
+                ]);
             }
         }
-
-        product::create($request->all());
         return redirect()->route('product.index');
     }
 
@@ -63,7 +77,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $data['categorys'] = Categories::all();
-        $data['product'] = product::find($id);
+        $data['product'] = product::with('media')->find($id);
         return view('backend.product.edit', $data);
     }
 
@@ -79,11 +93,27 @@ class ProductController extends Controller
         ], []);
         $request->offsetUnset('_token');
         $request->offsetUnset('_method');
-        if (!$request->image) {
-
-            $request->merge(['image' => product::where('id', $id)->value('image')]);
+        product::where('id', $id)->update([
+            'name' => $request['name'],
+            'content' => $request['content'],
+            'price' => $request['price'],
+            'sale' => $request['sale'],
+            'category_id' => $request['category_id'],
+            'status' => $request['status']
+        ]);
+        if ($request->image) {
+            Media::where('product_id',$id)->delete();
+            foreach ($request->image as $key => $value){
+                $fileName = Carbon::now()->timestamp . '_' .generate_random_string(11) . substr($value->getClientOriginalName(), strpos($value->getClientOriginalName(),'.'));
+                $value->move(storage_path('app/public/images/products'),$fileName);
+                $dataMedia['product_id'] = $id;
+                $dataMedia['image'] = $fileName;
+                Media::create([
+                    'product_id' => $dataMedia['product_id'],
+                    'image' => $dataMedia['image']
+                ]);
+            }
         }
-        product::where('id', $id)->update($request->all());
         return redirect()->route('product.index');
     }
 
@@ -148,5 +178,17 @@ class ProductController extends Controller
 
 
         }
+    }
+
+    public function search(Request $request){
+            $key = $request->search;
+            $data['products'] = Product::with('category')
+                ->select('product.*','category.name as category_name')
+                ->join('category','category.id','=' ,'product.category_id')
+                ->where('product.name','LIKE',"%${key}%")
+                ->orWhere('category.name','LIKE',"%${key}%")
+                ->orderBy('product.id','desc')
+                ->paginate(5);
+            return view('backend.product.index', $data);
     }
 }

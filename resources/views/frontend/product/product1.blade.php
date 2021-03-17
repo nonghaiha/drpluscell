@@ -7,9 +7,8 @@
                         <div class="product">
                             <figure class="product-image-container">
                                 <a href="{{route('product.list',['slug' => $model->slug ,'id' => $model->id])}}" class="product-image">
-                                    <img src="{{$model->image}}" alt="product" style="height: 400px" >
+                                    <img src="{{asset('storage/images/products') . '/' . $model->media[0]->image}}" alt="product" style="height: 400px;object-fit: cover" >
                                 </a>
-                                <a href="ajax/product-quick-view.html" class="btn-quickview">Quickview</a>
                             </figure>
                             <div class="product-details">
                                 <div class="ratings-container">
@@ -57,9 +56,8 @@
                         <div class="product">
                             <figure class="product-image-container">
                                 <a href="{{route('product.list',['slug' => $mode->slug ,'id' => $mode->id])}}" class="product-image">
-                                    <img src="{{$mode->image }}" alt="product" style="height: 400px">
+                                    <img src="{{asset('storage/images/products') . '/' . $mode->media[0]->image }}" alt="product" style="height: 400px;object-fit: cover">
                                 </a>
-                                <a href="ajax/product-quick-view.html" class="btn-quickview">Quickview</a>
                             </figure>
                             <div class="product-details">
                                 <div class="ratings-container">

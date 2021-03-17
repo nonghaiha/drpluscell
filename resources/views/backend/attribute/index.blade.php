@@ -9,33 +9,25 @@
     <form action="{{ route('attribute.store') }}" method="POST" role="form" class="col-md-4">
     <legend>Thêm mới</legend>
       @csrf
-    
-    <div class="form-group">
-      <label for="">Màu sắc</label>
-          <input type="text" class="form-control" name="color" v-model="color" value="{{old('color') }}" placeholder="Nhập kí hiệu thuộc tính...">
-          @if ($errors->has('color'))
-           <p class="text-danger">{{ $errors->first('color') }}</p>
-           @endif
-    </div>
 
     <div class="form-group">
-      <label for="">Size</label>
-          <input type="text" class="form-control" name="size" v-model="size" value="{{old('size') }}" placeholder="Nhập kí hiệu thuộc tính...">
+      <label for="">Dung tích</label>
+          <input type="text" class="form-control" name="size" v-model="size" value="{{old('size') }}" placeholder="Nhập dung tích...">
           @if ($errors->has('size'))
            <p class="text-danger">{{ $errors->first('size') }}</p>
            @endif
     </div>
     <div class="form-group">
-        <label for="">Tên thuộc tính</label>
-          <input type="text" class="form-control" name="name"  value="" id="name" placeholder="Nhập tên thuộc tính...">
-          @if ($errors->has('name'))
-           <p class="text-danger">{{ $errors->first('name') }}</p>
+        <label for="">Đơn vị</label>
+          <input type="text" class="form-control" name="type"  value="" id="name" placeholder="Nhập đơn vị...">
+          @if ($errors->has('type'))
+           <p class="text-danger">{{ $errors->first('type') }}</p>
            @endif
     </div>
       <button type="submit" class="btn btn-primary">Thêm mới</button>
-     
+
   </form>
-    
+
 
     <!-- Table -->
     @include('backend.attribute.list_att')
@@ -43,25 +35,4 @@
     </div>
 </div>
 @stop()
-@section('js')
-<script >
-  
-  var app=new Vue({
-    el:'#app',
-    data:function(){
-       return{
-       color:'',
-       size:'',
-       name:'',
 
-       }
-    },
-    methods:{
-      on_name:function(){
-        this.name=this.color+'-'+this.size;
-        $('#name').val(this.name);
-      }
-    }
-  });
-</script>
-@stop()

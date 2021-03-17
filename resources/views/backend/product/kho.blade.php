@@ -5,7 +5,7 @@
 <div class="box-body col-md-10">
     <div class="row">
         <div class="col-md-7">
-            
+
         <div class="media">
             <a class="pull-left" href="#">
                 <img class="media-object" src="{{ $product->image }}" alt="Image" width="50%">
@@ -31,9 +31,9 @@
                   <select name="attribute_id" id="" class="form-control" required="required">
                     <option value="">--Chọn loại--</option>
                 @foreach ($attributes as $cl)
-                    <option value="{{ $cl->id }}">{{ $cl->name }}</option>
+                    <option value="{{ $cl->id }}">{{ $cl->size . ' - ' .$cl->type }}</option>
                 @endforeach
-                
+
             </select>
             </div>
             <div class="form-group">
@@ -45,12 +45,12 @@
             </div>
 
 
-              
+
               <button type="submit" class="btn btn-primary">Thêm vào kho</button>
                <a href="{{ route('product.index') }}" class="btn btn-warning">Trở lại</a>
-             
+
           </form>
-            
+
         </div>
     </div>
 </div>
@@ -58,7 +58,7 @@
 @stop()
 @section('js')
 <script type="text/javascript">
-  
-   
-</script> 
+
+
+</script>
 @stop()

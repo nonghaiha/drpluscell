@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Attribute;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -38,8 +39,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        $product = Product::orderby('id', 'DESC')->limit(10)->get();
-        $produc = Product::orderby('id', 'ASC')->limit(6)->get();
+        $product = Product::with('media')->orderby('id', 'DESC')->limit(10)->get();
+        $produc = Product::with('media')->orderby('id', 'ASC')->limit(6)->get();
         return view('frontend.layout.index', compact('product', 'produc'));
 
         // return view('frontend.layout.master');
@@ -47,14 +48,16 @@ class HomeController extends Controller
 
     public function list($id, $slug,Request $request)
     {
-        $produ = Product::where(['id' => $id, 'slug' => $slug])->first();
+        $produ = Product::with('media')->where(['id' => $id, 'slug' => $slug])->first();
         $ca = Categories::where(['id' => $id, 'slug' => $slug])->first();
         if ($ca) {
-            $products = Product::where(['category_id' => $ca->id])->get();
-            return view('frontend.product.category', compact('ca', 'products'));
+            $products = Product::with('media')->where(['category_id' => $ca->id])->get();
+            $attribute = Attribute::orderBy('id','desc')->get();
+            return view('frontend.product.category', compact('ca', 'products','attribute'));
         } else {
-            $category = DB::table('category')->select('category.name')->join('product','product.category_id','=','category.id')->whereRaw('category.id = category_id')->first();
-            return view('frontend.product.product', compact('produ','category'));
+            $feature_product1 = Product::with('media')->orderby('id', 'ASC')->limit(3)->get();
+            $feature_product2 = Product::with('media')->orderby('id', 'DESC')->limit(10)->get();
+            return view('frontend.product.product', compact('produ','feature_product2','feature_product1'));
         }
     }
 
@@ -88,7 +91,7 @@ class HomeController extends Controller
     {
         $products = Product::paginate(8);
         if (request()->q) {
-            $products = Product::where('name', 'LIKE', '%' . request()->q . '%')->paginate(8);
+            $products = Product::with('media')->where('name', 'LIKE', '%' . request()->q . '%')->paginate(8);
         }
         return view('frontend.product.search', compact('products'));
     }
@@ -147,12 +150,12 @@ class HomeController extends Controller
     }
 
     public function searchPrice($id,$slug,Request $request){
-        if ($request->price !=null){
-        $products = DB::table('product')->where('category_id',$id)
+        if ($request->price != null){
+        $products = Product::with('media')->where('category_id',$id)
             ->where('price',$request->price)
             ->get();
         }else{
-            $products = DB::table('product')->where('category_id',$id)
+            $products = Product::with('media')->where('category_id',$id)
                 ->get();
         }
         $output = '';
@@ -163,7 +166,7 @@ class HomeController extends Controller
             $output .= '<div class="product">';
             $output .= ' <figure class="product-image-container">';
             $output .= '<a href="' . route('product.list', ['slug' => '' . $prod->slug . '', 'id' => '' . $prod->id . '']) . '" class="product-image">';
-            $output .= '<img src="' . $prod->image . '" alt="product">';
+            $output .= '<img src="' .asset('storage/images/products') . '/' . $prod->media[0]->image . '" alt="product" style="width: 170px;height: 226px;object-fit: cover">';
             $output .= '</a>';
             $output .= '</figure>';
             $output .= '<div class="product-details">';
@@ -176,7 +179,7 @@ class HomeController extends Controller
             $output .= '<a href="' . route('product.list', ['slug' => '' . $prod->slug . '', 'id' => '' . $prod->id . '']) . '">' . $prod->name . '</a>';
             $output .= '</h2>';
             $output .= '<div class="price-box">';
-            $output .= '<span class="product-price">$' . number_format($prod->price) . '</span>';
+            $output .= '<span class="product-price">' . number_format($prod->price) . ' VND</span>';
 
             $output .= '</div>';
 
@@ -200,6 +203,62 @@ class HomeController extends Controller
         $output .='</div>';
         $output .='</div>';
         echo $output;
+    }
+
+    public function searchAttribute($id, $slug, Request $request){
+        if ($request->attr != null){
+            $products = Attribute::with(['product_attribute' => function ($queryPA) use ($id){
+                $queryPA->with(['products' => function($queryProduct) use ($id) {
+                    $queryProduct->with('media')->where('category_id',$id);
+                }]);
+            }])->where('id',$request->attr)
+                ->first();
+            $output = '';
+            $output .= '<div class="owl-stage-outer">';
+            $output .= '<div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 901px;">';
+            foreach ($products->product_attribute as $prod) {
+                $output .= '<div class="owl-item active" style="width: 169.2px; margin-right: 11px;">';
+                $output .= '<div class="product">';
+                $output .= ' <figure class="product-image-container">';
+                $output .= '<a href="' . route('product.list', ['slug' => '' . $prod->products->slug . '', 'id' => '' . $prod->products->id . '']) . '" class="product-image">';
+                $output .= '<img src="' .asset('storage/images/products') . '/' . $prod->products->media[0]->image . '" alt="product" style="width: 170px;height: 226px;object-fit: cover">';
+                $output .= '</a>';
+                $output .= '</figure>';
+                $output .= '<div class="product-details">';
+                $output .= '<div class="ratings-container">';
+                $output .= '<div class="product-ratings">';
+                $output .= '<span class="ratings" style="width:80%"></span>';
+                $output .= '</div>';
+                $output .= '</div>';
+                $output .= '<h2 class="product-title" style="height: 50px; overflow: hidden">';
+                $output .= '<a href="' . route('product.list', ['slug' => '' . $prod->products->slug . '', 'id' => '' . $prod->products->id . '']) . '">' . $prod->products->name . '</a>';
+                $output .= '</h2>';
+                $output .= '<div class="price-box">';
+                $output .= '<span class="product-price">' . number_format($prod->products->price) . ' VND</span>';
+
+                $output .= '</div>';
+
+                $output .= '<div class="product-action">';
+                $output .= '<a href="#" class="paction add-wishlist" title="Add to Wishlist">';
+                $output .= '<span>Add to Wishlist</span>';
+                $output .= '</a>';
+
+                $output .= '           <a href="' . route('cart.add', ['id' => '' . $prod->products->id . '', 'slug' => '' . $prod->products->slug . '']) . '" class="paction add-cart" title="Add to Cart">';
+                $output .= '<span>Add to Cart</span>';
+                $output .= '</a>';
+
+                $output .= '<a href="#" class="paction add-compare" title="Add to Compare">';
+                $output .= '<span>Add to Compare</span>';
+                $output .= '</a>';
+                $output .= '</div>';
+                $output .= '</div>';
+                $output .= '</div>';
+                $output .= '</div>';
+            }
+            $output .='</div>';
+            $output .='</div>';
+            echo $output;
+        }
     }
 
     public function productSort($id,$slug,Request $request){

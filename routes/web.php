@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin','namespace' => 'admin','middleware'=>'CheckLog
        Route::get('/kho-{id}','ProductController@getKho')->name('get.product.kho');
        Route::post('/kho-{id}','ProductController@postKho')->name('post.product.kho');
        include_once 'admin/product.php';
+       Route::post('/products/search','ProductController@search')->name('product.search');
 
        include_once 'admin/customer.php';
        include_once 'admin/orders.php';
@@ -65,7 +66,8 @@ Route::group(['prefix' => 'admin','namespace' => 'admin','middleware'=>'CheckLog
   Route::get('/','Admin\HomeController@index')->name('frontend.layout');
   Route::get('/{id}-{slug}','Admin\HomeController@list')->name('product.list');
   Route::post('/{id}-{slug}/sort','Admin\HomeController@productSort')->name('product.sort');
-  Route::post('/{id}-{slug}/search','Admin\HomeController@searchPrice')->name('home.search.price');
+  Route::post('/{id}-{slug}/search/price','Admin\HomeController@searchPrice')->name('home.search.price');
+  Route::post('/{id}-{slug}/search/attribute','Admin\HomeController@searchAttribute')->name('home.search.attribute');
   Route::get('/cart-add/{id}','CartController@add')->name('cart.add');
   Route::get('/cart-remove/{id}','CartController@remove')->name('cart.remove');
   Route::get('/cart-update/{id}','CartController@update')->name('cart.update');
@@ -91,3 +93,4 @@ Route::group(['prefix' => 'admin','namespace' => 'admin','middleware'=>'CheckLog
 Route::get('single',function(){
       return view('frontend.single');
   })->name('single');
+Route::post('/search/product','HomeController@searchCategoryProductPrice')->name('product.category.search.price');

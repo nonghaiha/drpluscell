@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
 	[
@@ -40,23 +40,23 @@ return [
 	       ],
 		],
 	],
-	[
-		'name'=>'Quản lý Banner',
-		'icon'=>'fa fa-picture-o',
-		'route'=>'banner.index',
-		'items'=>[
-			[
-				'name'=>'Danh sách danh mục',
-				'icon'=>'fa-home',
-				'route'=>'banner.index',
-	       ],
-	       [
-				'name'=>'Thêm mới danh mục',
-				'icon'=>'fa-home',
-				'route'=>'banner.create',
-	       ],
-		],
-	],
+//	[
+//		'name'=>'Quản lý Banner',
+//		'icon'=>'fa fa-picture-o',
+//		'route'=>'banner.index',
+//		'items'=>[
+//			[
+//				'name'=>'Danh sách danh mục',
+//				'icon'=>'fa-home',
+//				'route'=>'banner.index',
+//	       ],
+//	       [
+//				'name'=>'Thêm mới danh mục',
+//				'icon'=>'fa-home',
+//				'route'=>'banner.create',
+//	       ],
+//		],
+//	],
 	[
 		'name'=>'Quản lý sản phẩm',
 		'icon'=>'fa  fa-cubes',
@@ -84,11 +84,11 @@ return [
 				'icon'=>'fa-home',
 				'route'=>'attribute.index',
 	       ],
-	       [
-				'name'=>'Thêm mới thuộc tính',
-				'icon'=>'fa-home',
-				'route'=>'attribute.create',
-	       ],
+    //	       [
+    //				'name'=>'Thêm mới thuộc tính',
+    //				'icon'=>'fa-home',
+    //				'route'=>'attribute.create',
+    //	       ],
 		],
 	],
 	[
@@ -101,7 +101,7 @@ return [
 				'icon'=>'fa-home',
 				'route'=>'customer.index',
 	       ],
-	       
+
 		],
 	],
 	[
@@ -114,7 +114,7 @@ return [
 				'icon'=>'fa-home',
 				'route'=>'orders.index',
 	       ],
-	       
+
 		],
 	],
 ];

@@ -8,10 +8,9 @@
                         @foreach($products as $prod)
                         <div class="product">
                             <figure class="product-image-container">
-                                <a href="#" class="product-image">
-                                    <img src="{{$prod->image}}" alt="product" style="height: 400px">
+                                <a href="{{route('product.list',['id' => $prod['id'], 'slug' => $prod['slug']])}}" class="product-image">
+                                    <img src="{{asset('storage/images/products') . '/' . $prod->media[0]->image}}" alt="product" style="height: 400px;object-fit: cover">
                                 </a>
-                                <a href="ajax/product-quick-view.html" class="btn-quickview">Quickview</a>
                             </figure>
                             <div class="product-details">
                                 <div class="ratings-container">
@@ -20,7 +19,7 @@
                                     </div><!-- End .product-ratings -->
                                 </div><!-- !-- End .product-container -->
                                 <h2 class="product-title" style="height: 50px">
-                                    <a href="product.html">{{$prod->name}}</a>
+                                    <a href="{{route('product.list',['id' => $prod['id'], 'slug' => $prod['slug']])}}">{{$prod->name}}</a>
                                 </h2>
                                 <div class="price-box">
                                     <span class="product-price">${{number_format($prod->price)}}</span>
