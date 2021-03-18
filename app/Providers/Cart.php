@@ -25,7 +25,8 @@
 				'image'=> $pro->image,
                 'slug' => $pro->slug,
 				'price' => $pro->sale_price ? $pro->sale_price : $pro->price,
-				'quantity' => 1
+				'quantity' => 1,
+                'media' => $pro->media
 			];
 			if(isset($this->items[$pro->id])){
 				$this->items[$pro->id]['quantity']+=1;

@@ -32,7 +32,7 @@
                                             <figure class="product-image-container">
                                                     <a href="{{route('product.list',['slug' => $model['slug'],'id' => $model['id']])}}"
                                                        class="product-image">
-                                                        <img src="{{$model['image']}}" alt="product">
+                                                        <img src="{{asset('storage/images/products') . '/' . $model['media'][0]['image'] }}" alt="product">
                                                     </a>
                                             </figure>
                                             <h2 class="product-title">
@@ -172,9 +172,4 @@
     </main><!-- End .main -->
 @stop
 @section('script')
-    <script type="text/javascript">
-        $('#cartCheck').on('click',function (e) {
-            e.preventDefault();
-        })
-    </script>
     @endsection

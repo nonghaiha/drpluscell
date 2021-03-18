@@ -75,13 +75,15 @@ class HomeController extends Controller
         $order->phone = $request->phone;
         $order->address = $request->address;
         $order->save();
-        foreach ($cart as $key => $value) {
+        if ($cart != null){
+            foreach ($cart as $key => $value) {
             $order_detail = new OrdersDetail();
             $order_detail->product_id = $key;
             $order_detail->orders_id = $order->id;
             $order_detail->quantity = $value['quantity'];
             $order_detail->price = $value['price'];
             $order_detail->save();
+        }
         }
         Session::forget('cart');
         return view('frontend.checkout-success')->with('thongbao', 'Đặt hàng thành công');

@@ -20,7 +20,7 @@
                                     <a href="{{route('product.list',['slug' => $model->slug ,'id' => $model->id])}}">{{$model->name}}</a>
                                 </h2>
                                 <div class="price-box">
-                                    <span class="product-price">${{number_format($model->price)}}</span>
+                                    <span class="product-price">{{number_format($model->price)}} VND</span>
 
                                 </div><!-- End .price-box -->
 
@@ -69,7 +69,7 @@
                                     <a href="{{route('product.list',['slug' => $mode->slug ,'id' => $mode->id])}}">{{$mode->name}}</a>
                                 </h2>
                                 <div class="price-box">
-                                    <span class="product-price">${{number_format($mode->price)}}</span>
+                                    <span class="product-price">{{number_format($mode->price)}} VND</span>
                                 </div><!-- End .price-box -->
 
                                 <div class="product-action">

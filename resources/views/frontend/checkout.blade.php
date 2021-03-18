@@ -20,11 +20,16 @@
 			<label> Address </label>
 			<input type="text" class="form-control" id="address" name="address" required style="margin: 0 auto">
 		</div>
+        <div class="form-group">
+            <label for="ship">Phương thức giao</label><br>
+            <input type="radio" id="ship" checked>
+            <span>Nhận hàng thanh toán</span>
+        </div>
 		<div class="clearfix text-center">
 			<button type="submit" class="btn btn-primary" href="#">Place Order</button>
-		</div
+		</div>
 	</form>
 </div><!-- End .clearfix -->
 <br>
-</div><!-- End .checkout-payment -->                                
+</div><!-- End .checkout-payment -->
 @stop

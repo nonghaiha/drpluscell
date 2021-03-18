@@ -6,7 +6,6 @@
                             <img src="{{ url('/frontend') }}/assets/images/logo.png" alt="Porto Logo">
                         </a>
                     </div><!-- End .header-left -->
-
                     <div class="header-center">
                         <div class="header-search">
                             <a href="#" class="search-toggle" role="button"><i class="icon-magnifier"></i></a>
@@ -51,8 +50,8 @@
                                             </div><!-- End .product-details -->
 
                                             <figure class="product-image-container">
-                                                <a href="product.html" class="product-image">
-                                                    <img src="{{ url('/frontend') }}/assets/images/products/cart/product-1.jpg" alt="product">
+                                                <a href="{{route('product.list',['id' => $it['id'], 'slug' => $it['slug']])}}" class="product-image">
+                                                    <img src="{{asset('storage/images/products') . '/' . $it['media'][0]['image']}}" alt="product" style="object-fit: cover">
                                                 </a>
                                                 <a href="{{route('cart.remove',['id'=>$it['id']])}}" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>
                                             </figure>

@@ -15,7 +15,7 @@ namespace App\Http\Controllers;
 
 		public function add($id,Cart $cart)
 		{
-			$pro = Product::find($id);
+			$pro = Product::with('media')->find($id);
 			if($pro){
 				$cart->add($pro);
 			}
