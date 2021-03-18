@@ -1,0 +1,49 @@
+.btn{
+    background-color: #0b9444;
+    outline: none;
+}
+.widget-newsletter .btn{
+    background-color: #0b9444 !important;
+}
+.blog-section .entry-date{
+    background-color: #0b9444;
+}
+.feature-box-simple i{
+    color: #0b9444;
+}
+.header{
+    border-top: 0.3rem solid #0b9444;
+}
+.menu>li:hover>a, .menu>li.show>a, .menu>li.active>a {
+    background-color: #0b9444;
+}
+.menu>li>a{
+    color: #0b9444;
+}
+.cart-dropdown .dropdown-toggle::before{
+    color: #0b9444;
+}
+.contact-info i{
+    background-color: #0b9444;
+}
+.footer .social-icon:hover{
+    background-color: #0b9444;
+}
+.product-single-details .price-box{
+    color: #0b9444;
+}
+.product-single-qty .btn.btn-outline{
+    background-color: transparent;
+}
+.paction:hover, .paction:focus{
+    background-color: #0b9444;
+}
+.widget-info i{
+    color: #0b9444;
+}
+.checkout-methods .btn+.btn{
+    background-color: transparent;
+}
+.table.table-cart tfoot .btn{
+    background-color: transparent;
+}

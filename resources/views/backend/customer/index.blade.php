@@ -6,19 +6,18 @@
     <!-- Default panel contents -->
     <div class="panel-heading">Danh sách khách hàng</div>
     <div class="panel-body">
-        <form action="" method="get" class="form-inline" role="form">
-
+        <form action="{{route('customer.search')}}" method="POST" class="form-inline" role="form">
+            @csrf
             <div class="col-md-6" class="form-search">
-                                        
+
                 <div class="input-group">
                 <input type="text" name="search" id="search" class="form-control" placeholder="Search...">
                 <span class="input-group-btn">
                     <button type="submit" id="search_btn" class="btn btn-primary"><i class="fa fa-search"></i>
                     </button>
                 </span>
-                
+
                 </div>
-            <a href="{{route('customer.create')}}" class="btn btn-success">Thêm mới</a>
              </div>
         </form>
     </div>
@@ -32,7 +31,6 @@
                 <th>Email</th>
                 <th>SDT</th>
                 <th>Đia chỉ</th>
-                <th>Điểm tích lũy</th>
                 <th>Hành động</th>
             </tr>
         </thead>
@@ -44,7 +42,6 @@
                 <td>{{ $customer->email }}</td>
                 <td>{{$customer->phone}}</td>
                 <td>{{$customer->address}}</td>
-                <td>{{$customer->point_sale}}</td>
                 <td>
                     <div class="action">
                         <form action="{{route('customer.destroy',['id'=>$customer->id])}}" method="POST"  class="form-action">

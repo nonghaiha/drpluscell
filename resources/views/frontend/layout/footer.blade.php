@@ -14,7 +14,7 @@
                                         <form action="#">
                                             <input type="email" class="form-control" placeholder="Email address" >
 
-                                            <input type="submit" class="btn" value="Subscribe">
+                                            <input type="submit" class="btn" value="Subscribe" style="background-color: #0b9444; border-color: #0b9444">
                                         </form>
                                     </div><!-- End .col-lg-6 -->
                                 </div><!-- End .row -->
@@ -80,7 +80,7 @@
                                 <div class="col-md-7">
                                     <div class="widget">
                                         <h4 class="widget-title">Main Features</h4>
-                                        
+
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
@@ -245,7 +245,7 @@
     <script src="{{ url('/frontend') }}/assets/js/jquery.min.js"></script>
     <script src="{{ url('/frontend') }}/assets/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url('/frontend') }}/assets/js/plugins.min.js"></script>
-    
+
 
     <!-- Main JS File -->
     <script src="{{ url('/frontend') }}/assets/js/main.min.js"></script>

@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin','namespace' => 'admin','middleware'=>'CheckLog
        Route::post('/products/search','ProductController@search')->name('product.search');
 
        include_once 'admin/customer.php';
+       Route::post('/customer/search','CustomerController@search')->name('customer.search');
        include_once 'admin/orders.php';
 
 

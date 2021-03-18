@@ -82,8 +82,8 @@ class CategoryController extends Controller
     */
     public function destroy($id)
     {
-        $product = Product::all();
-        if($product)
+        $product = Product::where('category_id',$id)->get();
+        if(sizeof($product) > 0)
         {
             return redirect()->route('category.index')->with('error', 'Xóa không thành công do có sản phẩm tồn tại!');
         }

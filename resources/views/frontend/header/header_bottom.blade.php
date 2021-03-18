@@ -28,13 +28,11 @@
 
                     <ul>
                         <li><a href="{{route('cart.process')}}">Shopping Cart</a></li>
-                        <li><a href="{{route('checkout')}}">Checkout</a>
-                        </li>
                         <li><a href="{{route('about.index')}}">About Us</a></li>
                         <li><a href="{{route('blog')}}">Blog</a>
                         </li>
                         <li><a href="{{route('contact.index')}}">Contact Us</a></li>
-                        <li><a href="{{route('home.login')}}" class="login-link">Login</a></li>
+                        <li><a href="{{route('home.login')}}" >Login</a></li>
                     </ul>
                 </li>
             </ul>

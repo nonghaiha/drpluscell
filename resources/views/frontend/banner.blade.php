@@ -35,7 +35,7 @@
                         <div class="col-md-4">
                             <div class="banner banner-image">
                                 <a href="">
-                                    <img src="{{ url('/frontend') }}/assets/images/banners/banner-4.jpg" alt="banner">
+                                    <img src="{{ url('/frontend') }}/assets/images/banners/event-acne-ampoule.jpg" alt="banner">
                                 </a>
                             </div><!-- End .banner -->
                         </div><!-- End .col-md-4 -->
@@ -43,7 +43,7 @@
                         <div class="col-md-4">
                             <div class="banner banner-image">
                                 <a href="">
-                                    <img src="{{ url('/frontend') }}/assets/images/banners/banner-2.jpg" alt="banner">
+                                    <img src="{{ url('/frontend') }}/assets/images/banners/ac9f4340bef245ac1ce3.jpg" alt="banner">
                                 </a>
                             </div><!-- End .banner -->
                         </div><!-- End .col-md-4 -->
@@ -51,7 +51,7 @@
                         <div class="col-md-4">
                             <div class="banner banner-image">
                                 <a href="">
-                                    <img src="{{ url('/frontend') }}/assets/images/banners/banner-5.jpg" alt="banner">
+                                    <img src="{{ url('/frontend') }}/assets/images/banners/73381167_2136807239960481_3542036868763746304_o-1.jpg" alt="banner">
                                 </a>
                             </div><!-- End .banner -->
                         </div><!-- End .col-md-4 -->

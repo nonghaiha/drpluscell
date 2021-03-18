@@ -4,7 +4,7 @@
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 <a href="#">VietTien</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2020 <a href="#"></a>.</strong> All rights reserved.
   </footer>
     <div class="control-sidebar-bg"></div>
 </div>
