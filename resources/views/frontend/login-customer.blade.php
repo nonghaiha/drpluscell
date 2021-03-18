@@ -11,10 +11,10 @@
 					<div class="arlert arlert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
 					@endif
 					<div class="form-group required-field">
-						<label for="">Usename</label>
-						<input type="text" class="form-control" id="use_name" name="use_name" placeholder="Input field" required value="{{old('use_name')}}">
-						 @if ($errors->has('use_name'))
-                        <p class="text-danger">{{ $errors->first('use_name') }}</p>
+						<label for="">Email</label>
+						<input type="text" class="form-control" id="email" name="email" placeholder="Input field" required value="{{old('email')}}">
+						 @if ($errors->has('email'))
+                        <p class="text-danger">{{ $errors->first('email') }}</p>
                         @endif
 					</div>
 					<div class="form-group required-field">

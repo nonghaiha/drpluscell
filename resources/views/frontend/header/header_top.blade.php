@@ -1,20 +1,8 @@
             <div class="header-top">
                 <div class="container">
-                    <div class="header-left header-dropdowns">
-
-                        <div class="header-dropdown">
-                            <a href="#"><img src="{{ url('/frontend') }}/assets/images/flags/en.png" alt="England flag">ENGLISH</a>
-                            <div class="header-menu">
-                                <ul>
-                                    <li><a href="#"><img src="{{ url('/frontend') }}/assets/images/flags/en.png" alt="England flag">ENGLISH</a></li>
-                                    <li><a href="#"><img src="{{ url('/frontend') }}/assets/images/flags/fr.png" alt="France flag">FRENCH</a></li>
-                                </ul>
-                            </div><!-- End .header-menu -->
-                        </div><!-- End .header-dropown -->
-                    </div><!-- End .header-left -->
 
                     <div class="header-right">
-                        <p class="welcome-msg">Default welcome msg! </p>
+                        <p class="welcome-msg">Welcome to Drpluscell! </p>
 
                         <div class="header-dropdown dropdown-expanded">
                             <a href="#">Links</a>

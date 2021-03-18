@@ -40,13 +40,6 @@
                         @endif
                     </div>
                     <div class="form-group required-field">
-                        <label for="acc-usename">User Name</label>
-                        <input type="text" class="form-control" id="use_name" name="use_name" required value="{{old('use_name')}}">
-                        @if ($errors->has('use_name'))
-                        <p class="text-danger">{{ $errors->first('use_name') }}</p>
-                        @endif
-                    </div>
-                    <div class="form-group required-field">
                         <label for="acc-address">Address</label>
                         <input type="text" class="form-control" id="address" name="address" required value="{{old('address')}}">
                         @if ($errors->has('address'))

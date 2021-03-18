@@ -105,13 +105,10 @@ class HomeController extends Controller
     {
         $this->validate($request, [
             'email' => 'unique:customer,email',
-            'use_name' => 'min:6|unique:customer,use_name',
             'confirm_password' => 'same:password',
             'password' => 'min:6',
         ], [
             'email.unique' => 'Email này đã được sử dụng!',
-            'use_name.unique' => 'Tài khoản này đã được sử dụng!',
-            'use_name.min' => 'Tên tài khoản tối thiểu 6 kí tự!',
             'password.min' => 'Mật khẩu phải tối thiểu 6 ký tự!',
             'confirm_password.same' => 'Bạn phải nhập trùng mật khẩu!',
         ]);
@@ -129,13 +126,13 @@ class HomeController extends Controller
     public function postLogin1(Request $request)
     {
         $this->validate($request, [
-            'use_name' => 'alpha_num',
+            'email' => 'required',
             'password' => 'min:6',
         ], [
-            'use_name.alpha_num' => 'Tên tài khoản không được chứa ký tự đặc biệt',
+            'email.required' => 'Tài khoản không được để trống',
             'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự',
         ]);
-        $credentials = array('use_name' => $request->use_name, 'password' => $request->password);
+        $credentials = array('email' => $request->email, 'password' => $request->password);
         if (Auth::guard('customer')->attempt($credentials)) {
             return redirect()->route('frontend.layout');
         } else {
